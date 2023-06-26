@@ -1,5 +1,5 @@
 Vagrant.configure("2") do |config|
-  config.vm.box = "bento/ubuntu-23.04"
+  config.vm.box = "centos/8"
   config.vm.box_check_update = true
 
   config.vbguest.auto_update = false if Vagrant.has_plugin?("vagrant-vbguest")
@@ -21,14 +21,14 @@ Vagrant.configure("2") do |config|
   config.ssh.forward_agent = true
   config.ssh.forward_x11 = true
 
-  $script_root = "/bin/bash --login /vagrant/setup-under-root.sh"
-  config.vm.provision "shell", privileged: true, inline: $script_root
+  # $script_root = "/bin/bash --login /vagrant/setup-under-root.sh"
+  # config.vm.provision "shell", privileged: true, inline: $script_root
 
   # Reboot between the sudo and regular user steps to pick up the new 'docker' group.
   #   https://developer.hashicorp.com/vagrant/docs/provisioning/shell#reboot
-  config.vm.provision "shell", reboot: true
+  # config.vm.provision "shell", reboot: true
 
-  $script_vagrant = "/bin/bash --login /vagrant/setup-under-vagrant.sh"
-  config.vm.provision "shell", privileged: false, inline: $script_vagrant
+  # $script_vagrant = "/bin/bash --login /vagrant/setup-under-vagrant.sh"
+  # config.vm.provision "shell", privileged: false, inline: $script_vagrant
 
 end
