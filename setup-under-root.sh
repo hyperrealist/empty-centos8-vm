@@ -11,11 +11,12 @@ sudo sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-*
 sudo sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g' /etc/yum.repos.d/CentOS-*
 sudo yum update -y
 
-# Enable PowerTools
-sudo dnf config-manager --enable powertools
+# install essential tools
+sudo yum install -y wget git tmux
 
-# Install X11 for matplotlib, etc.
-sudo yum update
-sudo yum install -y wget git xorg-x11-server-Xorg xorg-x11-utils xorg-x11-apps
+# Enable PowerTools
+# sudo dnf config-manager --enable powertools
+# sudo yum update
+# sudo yum install -y xorg-x11-server-Xorg xorg-x11-utils xorg-x11-apps
 
 sudo yum remove -y docker docker-engine docker.io containerd runc || true
