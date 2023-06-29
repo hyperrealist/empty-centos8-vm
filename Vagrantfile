@@ -29,7 +29,7 @@ Vagrant.configure("2") do |config|
 
   # Reboot between the sudo and regular user steps to pick up the new 'docker' group.
   #   https://developer.hashicorp.com/vagrant/docs/provisioning/shell#reboot
-  config.vm.provision "shell", reboot: true
+  # config.vm.provision "shell", reboot: true
 
   $script_vagrant = "/bin/bash --login /vagrant/setup-under-vagrant.sh"
   config.vm.provision "shell", privileged: false, inline: $script_vagrant
